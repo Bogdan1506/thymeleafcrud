@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>New User</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+<div align="center" class="container">
+    <h1 class="bg-primary text-white">User Form</h1>
+    <br/>
+    <form action="#" th:action="@{/save}" th:object="${user}">
+        <input th:field="*{name}" placeholder="Name" class="form-control mb-4 col-4">
+        <input th:field="*{surname}" placeholder="Surname" class="form-control mb-4 col-4">
+        <input th:field="*{country}" placeholder="Country" class="form-control mb-4 col-4">
+        <input th:field="*{email}" placeholder="Email" class="form-control mb-4 col-4">
+        <button type="submit" class="btn btn-primary">Add new user</button>
+    </form>
+    <br/>
+    <a th:href="@{/}"><-- Back</a>
+</div>
+</body>
+</html>

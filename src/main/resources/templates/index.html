@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>User List</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <h1 class="bg-success text-white" align="center">User List</h1>
+    <form action="#" th:action="@{/get}" th:object="${user}">
+        <label>
+            <input th:field="*{id}" placeholder="ID" class="form-control mb-1 col-5">
+            <button type="submit" class="btn btn-warning btn-sm">Find by ID</button>
+        </label>
+    </form>
+    <table class="table table-light table-striped">
+        <thead>
+        <tr>
+            <td><b>ID</b></td>
+            <td><b>Name</b></td>
+            <td><b>Surname</b></td>
+            <td><b>Country</b></td>
+            <td><b>Email</b></td>
+            <td><b>Action</b></td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user : ${list}">
+            <td th:text="${user.id}"/>
+            <td th:text="${user.name}"/>
+            <td th:text="${user.surname}"/>
+            <td th:text="${user.country}"/>
+            <td th:text="${user.email}"/>
+            <td>
+                <a class="btn btn-primary text-white btn-sm" th:href="@{'/edit/' + ${user.id}}">Update</a>
+                &nbsp;
+                <a class="btn btn-danger text-white btn-sm"
+                   onclick="if (!(confirm('Are you sure wanna delete this user?'))) return false"
+                   th:href="@{'/delete/' + ${user.id}}">Delete</a></td>
+        </tr>
+        </tbody>
+    </table>
+    <form action="#" th:action="@{/new}">
+        <button type="submit" class="btn btn-success btn-lg">Add new user</button>
+    </form>
+</div>
+</body>
+</html>
